@@ -1,10 +1,10 @@
 import Vue from 'vue'
 import VueRouter, { RouteConfig } from 'vue-router'
-import { LoginPage, AdminPage } from '../views'
+import { LoginPage, AdminPage, RegisterPeoplePage } from '../views'
 
 Vue.use(VueRouter)
 
-const routes: Array<RouteConfig> = [ 
+const routes: Array<RouteConfig> = [
   {
     path: '/login',
     name: 'LoginPage',
@@ -15,6 +15,11 @@ const routes: Array<RouteConfig> = [
     name: 'AdminPage',
     component: AdminPage
   },
+  {
+    path: '/register-people',
+    name: 'RegisterPeoplePage',
+    component: RegisterPeoplePage
+  }
 ]
 
 const router = new VueRouter({
