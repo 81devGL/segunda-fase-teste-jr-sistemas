@@ -12,7 +12,7 @@
       </div>
       <div class="text-right">
         <div class="text-white">Nome do usuário logado</div>
-        <a href="javascript:void(0)" class="p-20 di" @click="logout">
+        <a @click="logout()" href="javascript:void(0)" class="p-20 di">
           <i class="fas fa-sign-out-alt"></i>
           Sair
         </a>
@@ -24,7 +24,7 @@
         <div class="col-md-3">
           <button class="btn btn-info" @click="openForm">Novo</button>
         </div>
-        <div class="col-md-9">          
+        <div class="col-md-9">
           <div class="input-group">
             <input
               type="text"
@@ -111,7 +111,11 @@ export default Vue.extend({
       console.log(pessoa);
     },
     logout() {
-      //Apagar dados de token e voltar para tela de login
+      // Remove o token de login e, em seguida
+      // Redireciona o usuário para a tela de login novamente
+
+      localStorage.removeItem("TOKEN_LOGIN");
+      this.$router.replace({ name: "LoginPage" });
     },
   },
 });
