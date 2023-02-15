@@ -16,10 +16,8 @@
         <td>{{ item.email }}</td>
         <td>{{ item.telefone_1 }}</td>
         <td>
-          <button class="btn btn-info" @click="action('edit', item)">
-            Editar
-          </button>
-          <button class="btn btn-danger" @click="action('delete', item)">
+          <button class="btn btn-info">Editar</button>
+          <button class="btn btn-danger" @click="deletePerson(item)">
             Excluir
           </button>
         </td>
@@ -29,14 +27,39 @@
 </template>
 
 <script lang="ts">
+import { AppKeys } from "@/app_keys";
 import Vue from "vue";
+
+import { PessoaProvider } from "../pessoa-provider";
 export default Vue.extend({
+  data() {
+    return {
+      pessoaProvider: {} as PessoaProvider,
+    };
+  },
+  created() {
+    const token = localStorage.getItem(AppKeys.tokenLogin);
+
+    if (token) {
+      this.pessoaProvider = new PessoaProvider(AppKeys.baseUrl, token);
+    } else {
+      this.$router.replace({ name: "LoginPage" });
+    }
+  },
   props: {
     items: {
       type: Array,
       default() {
         return [] as any[];
       },
+    },
+  },
+  methods: {
+    deletePerson(currentPerson: any) {
+      console.log(currentPerson);
+      this.pessoaProvider.delete(currentPerson.cod_pessoa).then(() => {
+        this.$router.replace({ name: "AdminPage" });
+      });
     },
   },
 });

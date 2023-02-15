@@ -93,6 +93,24 @@ export class PessoaProvider {
     return person;
   }
 
-  // delete(codPessoa) {}
+  async delete(codPessoa: string) {
+    console.log('teste' + codPessoa)
+    let person;
+    try {
+      const response = await this.httpClient({
+        method: 'delete',
+        url: '/gbl/pessoas',
+        data: codPessoa
+      });
+      console.log('pessoa cadastrada com sucesso');
+      person = response.data;
+    }
+    catch (error) {
+      console.log('error', error)
+    }
+
+    return person;
+
+  }
 
 }
