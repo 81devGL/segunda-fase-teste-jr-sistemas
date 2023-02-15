@@ -19,7 +19,7 @@ export class PessoaAuthProvider {
   async find(): Promise<any> {
     try {
       const response = await this.httpClient({
-        method: 'get',       
+        method: 'get',
         url: '/usuarios/dados',
       });
       return response.data

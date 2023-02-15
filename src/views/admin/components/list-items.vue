@@ -55,6 +55,7 @@ export default Vue.extend({
     },
   },
   methods: {
+    // Verificar rota de deleção, pois a mesma retorna bad request
     deletePerson(currentPerson: any) {
       console.log(currentPerson);
       this.pessoaProvider.delete(currentPerson.cod_pessoa).then(() => {

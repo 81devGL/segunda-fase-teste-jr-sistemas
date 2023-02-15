@@ -54,6 +54,7 @@ import { PessoaProvider } from "./pessoa-provider";
 import { AppKeys } from "@/app_keys";
 
 import PessoasList from "./components/list-items.vue";
+import { PessoaAuthProvider } from "./pessoa-auth-provider";
 
 export default Vue.extend({
   components: {
@@ -74,6 +75,7 @@ export default Vue.extend({
       },
       isPessoasList: false,
       pessoaProvider: {} as PessoaProvider,
+      pessoaAuthProvider: {} as PessoaAuthProvider,
       masks: {
         cpf: "###.###.###-##",
         dtNascimento: "",
@@ -88,10 +90,17 @@ export default Vue.extend({
 
     if (token) {
       this.pessoaProvider = new PessoaProvider(AppKeys.baseUrl, token);
+      this.pessoaAuthProvider = new PessoaAuthProvider(AppKeys.baseUrl, token);
       this.findAll();
     } else {
       this.$router.replace({ name: "LoginPage" });
     }
+
+    // Verificar o motivo de estar retornando 404 Not Found
+    let currentUser = this.pessoaAuthProvider.find();
+    currentUser.then((data) => {
+      console.log(data);
+    });
   },
   methods: {
     openForm() {
