@@ -1,21 +1,23 @@
 <template>
   <div class="form-group">
-      <div class="input-group">
-    <label for="">{{ label }}</label>
-    <input
-      type="text"
-      class="form-control"
-      @input="handleInput"
-      :value="vModelValue"
-      v-mask="mask"
-    />
-    <span class="help-block" v-show="hasError">{{ error }}</span>
+    <div class="">
+      <label for="">{{ label }}</label>
+      <input
+        type="text"
+        class="form-control"
+        @input="handleInput"
+        :value="vModelValue"
+        v-mask="mask"
+        :placeholder="label"
+      />
+      <span class="help-block" v-show="hasError">{{ error }}</span>
+    </div>
   </div>
 </template>
 
 <script lang="ts">
 import Vue from "vue";
-import VueMask from 'v-mask'
+import VueMask from "v-mask";
 Vue.use(VueMask);
 
 export default Vue.extend({
@@ -44,7 +46,7 @@ export default Vue.extend({
     mask: {
       type: String,
     },
-  }, 
+  },
   data() {
     return {
       vModelValue: "",

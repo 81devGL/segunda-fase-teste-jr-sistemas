@@ -18,31 +18,49 @@
         </a>
       </div>
     </section>
-
     <div class="container">
-      <div class="row">
-        <div class="col-md-3">
-          <button class="btn btn-info" @click="openForm">Novo</button>
-        </div>
-        <div class="col-md-9">
-          <div class="input-group">
-            <input
-              type="text"
-              class="form-control"
-              v-model="search"
-              placeholder="Procurar pessoas..."
-            />
-            <div class="input-group-append">
-              <button class="btn btn-info" @click="searchPessoa">
-                Pesquisar
-              </button>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div v-if="isPessoasList">
-        <PessoasList :items="pessoas" />
-      </div>
+      <h2 class="title mb-4">Cadastrar nova pessoa</h2>
+      <form action="">
+        <form-input-component
+          label="Tipo de Pessoa: "
+          v-model="personType"
+        ></form-input-component>
+        <form-input-component
+          label="CPF/CNPJ: "
+          v-model="document"
+          :mask="documentMask"
+        ></form-input-component>
+        <form-input-component
+          label="Razão Social: "
+          v-model="socialName"
+        ></form-input-component>
+        <form-input-component
+          label="Nome: "
+          v-model="name"
+        ></form-input-component>
+        <form-input-component
+          label="Sexo: "
+          v-model="gender"
+        ></form-input-component>
+        <form-input-component
+          label="Nacionalidade: "
+          v-model="nacionality"
+        ></form-input-component>
+        <form-input-component
+          label="Estado Civil: "
+          v-model="civilState"
+        ></form-input-component>
+        <form-input-component
+          label="Data de Nascimento: "
+          v-model="dtBirth"
+          :mask="dtBirthMask"
+        ></form-input-component>
+        <form-input-component
+          label="Email: "
+          v-model="email"
+        ></form-input-component>
+        <button class="btn btn-info">Cadastrar</button>
+      </form>
     </div>
   </div>
 </template>
@@ -52,15 +70,25 @@ import Vue from "vue";
 
 import { PessoaProvider } from "./pessoa-provider";
 import { AppKeys } from "@/app_keys";
-
-import PessoasList from "./components/list-items.vue";
+import { FormInputComponent } from "@/components";
 
 export default Vue.extend({
   components: {
-    PessoasList,
+    FormInputComponent,
   },
   data() {
     return {
+      personType: "",
+      document: "",
+      socialName: "",
+      name: "",
+      gender: "",
+      nacionality: "",
+      civilState: "",
+      dtBirth: "",
+      email: "",
+      documentMask: "###.###.###-##",
+      dtBirthMask: "####/##/##",
       title: "Cadastro de pessoa",
       pessoas: [] as any[],
       pessoaDataForm: {

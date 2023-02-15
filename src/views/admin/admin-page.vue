@@ -95,7 +95,7 @@ export default Vue.extend({
   },
   methods: {
     openForm() {
-      // abrir formulario para cadastro
+      this.$router.replace({ name: "RegisterPeoplePage" });
     },
     async searchPessoa() {
       this.pessoas = await this.pessoaProvider.findBySearch(this.search);
