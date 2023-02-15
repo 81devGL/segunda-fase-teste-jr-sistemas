@@ -152,8 +152,12 @@ export default Vue.extend({
         dtBirth: this.dtBirth,
         email: this.email,
       };
-      //console.log(this.personType, this.documentNumber);
-      this.pessoaProvider.save(newPersonObj);
+
+      // Faz a requisicao para cadastrar uma nova pessoa
+      // Se bem sucedida, retorna para a pagina inicial
+      this.pessoaProvider.save(newPersonObj).then(() => {
+        this.$router.replace({ name: "AdminPage" });
+      });
     },
     logout() {
       // Remove o token de login e, em seguida

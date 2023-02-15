@@ -75,7 +75,6 @@ export class PessoaProvider {
     let person;
 
     // Bloco responsável por executar a requisição
-    // Se bem sucedida, retorna para a pagina inicial
     try {
       const response = await this.httpClient({
         method: 'post',
