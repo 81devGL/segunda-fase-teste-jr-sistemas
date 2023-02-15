@@ -1,3 +1,4 @@
+import IPersonData from '@/interfaces/IPersonData';
 import axios from 'axios'
 export class PessoaProvider {
   httpClient
@@ -20,7 +21,7 @@ export class PessoaProvider {
     let items = [] as any[]
     try {
       const response = await this.httpClient({
-        method: 'get',       
+        method: 'get',
         url: '/gbl/pessoas',
       });
       items = response.data
@@ -37,7 +38,7 @@ export class PessoaProvider {
     let items = [] as any[]
     try {
       const response = await this.httpClient({
-        method: 'get',       
+        method: 'get',
         url: '/gbl/pessoas',
         params: {
           'filter': `contains(nome,"${search}")`
@@ -53,7 +54,45 @@ export class PessoaProvider {
     return items
   }
 
-  // save(data) {}
+  async save(data: any) {
+    // Const utilizando destructuring do JS, pegando cada propriedade vinda do objeto data
+    const { personType, documentNumber, socialName, name, gender, nacionality, civilState, dtBirth, email } = data;
+
+    // Atribuicao dos valores recebidos via parametros para a tipagem
+    // Aceita pelo banco de dados
+    const peopleObject: IPersonData = {
+      "tipo_pessoa": personType,
+      "cpf_cnpj": documentNumber,
+      "razao_social": socialName,
+      "nome": name,
+      "sexo": gender,
+      "nacionalidade": nacionality,
+      "estado_civil": civilState,
+      "dt_nascimento": dtBirth,
+      "email": email
+    }
+
+    let people;
+
+    // Bloco responsável por executar a requisição
+    // Se bem sucedida, retorna para a pagina inicial
+    try {
+      const response = await this.httpClient({
+        method: 'post',
+        url: '/gbl/pessoas',
+        data: peopleObject
+      })
+      people = response.data;
+    }
+
+    // Em caso de erro, o mesmo é printado no console
+    catch (error) {
+      console.log('error', error)
+    }
+
+    // A variável people é retornada com os dados da requisição
+    return people;
+  }
 
   // delete(codPessoa) {}
 

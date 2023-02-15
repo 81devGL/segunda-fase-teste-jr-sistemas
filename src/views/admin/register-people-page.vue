@@ -27,7 +27,7 @@
         ></form-input-component>
         <form-input-component
           label="CPF/CNPJ: "
-          v-model="document"
+          v-model="documentNumber"
           :mask="documentMask"
         ></form-input-component>
         <form-input-component
@@ -59,7 +59,9 @@
           label="Email: "
           v-model="email"
         ></form-input-component>
-        <button class="btn btn-info">Cadastrar</button>
+        <button type="button" @click="registerNewPerson()" class="btn btn-info">
+          Cadastrar
+        </button>
       </form>
     </div>
   </div>
@@ -79,7 +81,7 @@ export default Vue.extend({
   data() {
     return {
       personType: "",
-      document: "",
+      documentNumber: "",
       socialName: "",
       name: "",
       gender: "",
@@ -137,6 +139,21 @@ export default Vue.extend({
     },
     deleteItem(pessoa: any) {
       console.log(pessoa);
+    },
+    registerNewPerson() {
+      const newPersonObj = {
+        personType: this.personType,
+        documentNumber: this.documentNumber,
+        socialName: this.socialName,
+        name: this.name,
+        gender: this.gender,
+        nacionality: this.nacionality,
+        civilState: this.civilState,
+        dtBirth: this.dtBirth,
+        email: this.email,
+      };
+      //console.log(this.personType, this.documentNumber);
+      this.pessoaProvider.save(newPersonObj);
     },
     logout() {
       // Remove o token de login e, em seguida
