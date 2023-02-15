@@ -1,5 +1,6 @@
 import IPersonData from '@/interfaces/IPersonData';
 import axios from 'axios'
+
 export class PessoaProvider {
   httpClient
 

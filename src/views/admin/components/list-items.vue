@@ -59,7 +59,7 @@ export default Vue.extend({
     deletePerson(currentPerson: any) {
       console.log(currentPerson);
       this.pessoaProvider.delete(currentPerson.cod_pessoa).then(() => {
-        this.$router.replace({ name: "AdminPage" });
+        //this.$router.replace({ name: "AdminPage" });
       });
     },
   },

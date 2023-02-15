@@ -1,4 +1,5 @@
 import axios from 'axios'
+
 export class PessoaAuthProvider {
   httpClient
 
@@ -20,7 +21,7 @@ export class PessoaAuthProvider {
     try {
       const response = await this.httpClient({
         method: 'get',
-        url: '/usuarios/dados',
+        url: '/gbl/usuarios/dados',
       });
       return response.data
 

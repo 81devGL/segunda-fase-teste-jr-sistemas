@@ -11,7 +11,7 @@
         </a>
       </div>
       <div class="text-right">
-        <div class="text-white">Nome do usuário logado</div>
+        <div class="text-white">{{ currentUserName }}</div>
         <a @click="logout()" href="javascript:void(0)" class="p-20 di">
           <i class="fas fa-sign-out-alt"></i>
           Sair
@@ -62,6 +62,7 @@ export default Vue.extend({
   },
   data() {
     return {
+      currentUserName: "",
       title: "Cadastro de pessoa",
       pessoas: [] as any[],
       pessoaDataForm: {
@@ -85,6 +86,17 @@ export default Vue.extend({
     };
   },
 
+  mounted() {
+    // Busca o usuario atual e insere seu nome na variavel
+    // Para que a navbar utilize o nome do usuario
+    let currentUser = this.pessoaAuthProvider.find();
+    currentUser
+      .then((data) => {
+        this.currentUserName = data.nome;
+      })
+      .catch(() => (this.currentUserName = "Usuario"));
+  },
+
   created() {
     const token = localStorage.getItem(AppKeys.tokenLogin);
 
@@ -95,12 +107,6 @@ export default Vue.extend({
     } else {
       this.$router.replace({ name: "LoginPage" });
     }
-
-    // Verificar o motivo de estar retornando 404 Not Found
-    let currentUser = this.pessoaAuthProvider.find();
-    currentUser.then((data) => {
-      console.log(data);
-    });
   },
   methods: {
     openForm() {
