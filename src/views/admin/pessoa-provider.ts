@@ -95,15 +95,15 @@ export class PessoaProvider {
   }
 
   async delete(codPessoa: string) {
-    console.log('teste' + codPessoa)
+    // Faz a requisicao DELETE utilizando
+    // codPessoa como parametro da rota
     let person;
     try {
       const response = await this.httpClient({
         method: 'delete',
-        url: '/gbl/pessoas',
-        data: codPessoa
+        url: `/gbl/pessoas/${codPessoa}`
       });
-      console.log('pessoa cadastrada com sucesso');
+      console.log('pessoa excluida com sucesso');
       person = response.data;
     }
     catch (error) {
