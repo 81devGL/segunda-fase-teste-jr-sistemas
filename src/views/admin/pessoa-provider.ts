@@ -60,7 +60,7 @@ export class PessoaProvider {
 
     // Atribuicao dos valores recebidos via parametros para a tipagem
     // Aceita pelo banco de dados
-    const peopleObject: IPersonData = {
+    const personObject: IPersonData = {
       "tipo_pessoa": personType,
       "cpf_cnpj": documentNumber,
       "razao_social": socialName,
@@ -72,7 +72,7 @@ export class PessoaProvider {
       "email": email
     }
 
-    let people;
+    let person;
 
     // Bloco responsável por executar a requisição
     // Se bem sucedida, retorna para a pagina inicial
@@ -80,9 +80,9 @@ export class PessoaProvider {
       const response = await this.httpClient({
         method: 'post',
         url: '/gbl/pessoas',
-        data: peopleObject
+        data: personObject
       })
-      people = response.data;
+      person = response.data;
     }
 
     // Em caso de erro, o mesmo é printado no console
@@ -91,7 +91,7 @@ export class PessoaProvider {
     }
 
     // A variável people é retornada com os dados da requisição
-    return people;
+    return person;
   }
 
   // delete(codPessoa) {}
