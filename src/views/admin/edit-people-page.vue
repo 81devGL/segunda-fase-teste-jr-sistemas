@@ -161,6 +161,11 @@ export default Vue.extend({
         dtBirth: this.dtBirth,
         email: this.email,
       };
+      // Nao consegui pesquisar a tempo uma forma
+      // Correta de passaros dados do usuario selecionado
+      // Para a pagina de edição
+      // Decidi pesquisar melhor como fazer da forma correta
+      // Após o término do prazo de entrega
       this.$router.replace({ name: "AdminPage" });
     },
     logout() {
