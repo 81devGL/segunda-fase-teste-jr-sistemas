@@ -19,7 +19,7 @@
       </div>
     </section>
     <div class="container">
-      <h2 class="title mb-4">Cadastrar nova pessoa</h2>
+      <h2 class="title mb-4">Editar pessoa</h2>
       <form action="">
         <form-input-component
           label="Tipo de Pessoa: "
@@ -59,15 +59,15 @@
           label="Email: "
           v-model="email"
         ></form-input-component>
-        <button type="button" @click="registerNewPerson()" class="btn btn-info">
-          Cadastrar
+        <button type="button" @click="editPerson()" class="btn btn-info">
+          Editar
         </button>
       </form>
     </div>
   </div>
 </template>
-  
-  <script lang="ts">
+    
+    <script lang="ts">
 import Vue from "vue";
 
 import { PessoaProvider } from "./pessoa-provider";
@@ -149,13 +149,7 @@ export default Vue.extend({
       this.pessoas = await this.pessoaProvider.findAll();
       this.isPessoasList = true;
     },
-    editItem(pessoa: any) {
-      console.log(pessoa);
-    },
-    deleteItem(pessoa: any) {
-      console.log(pessoa);
-    },
-    registerNewPerson() {
+    editPerson() {
       const newPersonObj = {
         personType: this.personType,
         documentNumber: this.documentNumber,
@@ -167,12 +161,7 @@ export default Vue.extend({
         dtBirth: this.dtBirth,
         email: this.email,
       };
-
-      // Faz a requisicao para cadastrar uma nova pessoa
-      // Se bem sucedida, retorna para a pagina inicial
-      this.pessoaProvider.save(newPersonObj).then(() => {
-        this.$router.replace({ name: "AdminPage" });
-      });
+      this.$router.replace({ name: "AdminPage" });
     },
     logout() {
       // Remove o token de login e, em seguida
@@ -184,8 +173,8 @@ export default Vue.extend({
   },
 });
 </script>
-  
-  <style scoped>
+    
+    <style scoped>
 .navbar {
   position: relative;
   min-height: 70px;

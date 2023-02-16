@@ -46,7 +46,9 @@
         <td>{{ item.email }}</td>
         <td>{{ item.telefone_1 }}</td>
         <td>
-          <button class="btn btn-info mx-1">Editar</button>
+          <button class="btn btn-info mx-1" @click="redirectToEditPage()">
+            Editar
+          </button>
           <button class="btn btn-danger mx-1" @click="openConfirmModal(item)">
             Excluir
           </button>
@@ -131,6 +133,12 @@ export default Vue.extend({
         .catch(() => {
           this.showToasty("Ocorreu um erro ao deletar o usuário", "red");
         });
+    },
+    redirectToEditPage() {
+      // Não consegui a tempo pesquisar uma forma de passar
+      // Os dados do usuario selecionado para a rota de edição
+      // Consegui apenas criar a pagina
+      this.$router.replace({ name: "EditPeoplePage" });
     },
   },
 });

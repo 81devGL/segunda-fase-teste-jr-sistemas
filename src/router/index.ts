@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import VueRouter, { RouteConfig } from 'vue-router'
-import { LoginPage, AdminPage, RegisterPeoplePage } from '../views'
+import { LoginPage, AdminPage, RegisterPeoplePage, EditPeoplePage } from '../views'
 
 Vue.use(VueRouter)
 
@@ -19,6 +19,11 @@ const routes: Array<RouteConfig> = [
     path: '/register-people',
     name: 'RegisterPeoplePage',
     component: RegisterPeoplePage
+  },
+  {
+    path: '/edit-people',
+    name: "EditPeoplePage",
+    component: EditPeoplePage
   }
 ]
 
