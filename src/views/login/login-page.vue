@@ -113,7 +113,7 @@ export default Vue.extend({
         localStorage.setItem(AppKeys.tokenLogin, result)
         this.$router.replace({ name: 'AdminPage' })
       } else {
-        alert('Falha ao efetuar login')
+        alert('Đăng nhập thất bại')
       }
     },
   },
