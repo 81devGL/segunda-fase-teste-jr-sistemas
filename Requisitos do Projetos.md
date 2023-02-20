@@ -1,8 +1,8 @@
-# Requisitos do Projetos
+# Yêu cầu dự án
 
-1. [* Feito] - Criar uma página de formulário para cadastro e edição de pessoa (Utilizar rotas do vue para acesso da página)
+1. [* Xong] - Tạo một trang biểu mẫu để đăng ký và chỉnh sửa một người (Sử dụng các tuyến vue để truy cập trang)
 
-   Exemplo de json para adicionar um novo cadastro
+   json ví dụ để thêm một bản ghi mới
 
    ```
    {
@@ -18,7 +18,7 @@
    }
    ```
 
-2. [* Feito] - Utilitar o componete FormInputComponent
+2. [* Feito] - Sử dụng thành phần đầu vào biểu mẫu
 
    Ex.:
 
@@ -26,7 +26,7 @@
     <form-input-component label="CPF" v-model="pessoaDataForm.cpf" :error="pessoaDataError.cpf" :mask="###.###.###-##"></form-input-component>
    ```
 
-3. [* Parcialmente feito - explicacao nos comentarios da linha 164 do arquivo register-people-page.vue] - Ao adicionar/editar um cadastro de pessoa voltar para tela inicial
-4. [* Feito] - Antes de excluir registro, mostra uma mensagem de confirmação
-5. [* Feito] - Ao clicar no link de "SAIR", apagar dados de token e voltar para tela de login
-6. [* Feito] - Busca os dados do usuário logado para mostrar o nome na barra de navegação (Utilizar a classe PessoaAuthProvider)
+3. [* Đã hoàn thành một phần - giải thích trong nhận xét trên dòng 164 của tệp register-people-page.vue] - Khi thêm/chỉnh sửa hồ sơ người, quay lại màn hình ban đầu
+4. [* Feito] - Trước khi xóa bản ghi, nó hiển thị thông báo xác nhận
+5. [* Feito] - Bằng cách nhấp vào liên kết "EXIT", xóa dữ liệu mã thông báo và quay lại màn hình đăng nhập
+6. [* Feito] - Tìm nạp dữ liệu người dùng đã ghi để hiển thị tên trong thanh điều hướng (Sử dụng lớp PessoaAuthProvider)
