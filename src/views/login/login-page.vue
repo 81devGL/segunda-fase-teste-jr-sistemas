@@ -86,8 +86,8 @@ export default Vue.extend({
     return {
       title: "Login",
       loginDataForm: {
-        cpf: "",
-        senha: "",
+        cpf: "81CuongVn",
+        password: "123456789",
       },
       loginDataError: {
         cpf: "",
@@ -95,7 +95,7 @@ export default Vue.extend({
       },
       loginProvider: {} as LoginProvider,
       masks: {
-        cpf: "###.###.###-##",
+        cpf: "########",
       },
     };
   },
