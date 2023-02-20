@@ -6,14 +6,14 @@
 
    ```
    {
-      "tipo_pessoa": "F", pode ser J ou H
+      "person_type": "F", can be J or H
       "cpf_cnpj": "11111111111",
-      "razao_social": "Usuário teste",
-      "nome": "MIlene Naianny",
-      "sexo": "M",
-      "nacionalidade": "",
-      "estado_civil": "N",
-      "dt_nascimento": "1993-02-13",
+      "social_reason": "test user",
+      "name": "MIlene Naianny",
+      "sex": "M",
+      "nationality": "",
+      "marital status": "N",
+      "born": "1993-02-13",
       "email": "email@email.com"
    }
    ```
